@@ -5,22 +5,40 @@ services:
     container_name: basisdata_mysql # Nama kontainer
     restart: unless-stopped
     environment:
-      # Variabel untuk setup database awal
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} # Baca dari file .env
-      MYSQL_DATABASE: ${DB_DATABASE} # Baca dari file .env
-      MYSQL_USER: ${DB_USER} # Baca dari file .env
-      MYSQL_PASSWORD: ${DB_PASSWORD} # Baca dari file .env
+      # Variabel untuk setup database awal (dibaca dari .env)
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       # Menyimpan data database secara permanen
       - db_basisdata_data:/var/lib/mysql
     ports:
       # Memetakan port 3308 di laptop ke port 3306 di kontainer
-      # !! Port berbeda dari PBO (3307) agar tidak bentrok !!
       - "3308:3306"
     networks:
-      - basisdata_network # Jaringan khusus untuk service ini
+      - basisdata_network # Terhubung ke jaringan internal
 
-# === Definisi Volume ====
+  # === Service untuk PhpMyAdmin ===
+  phpmyadmin:
+    image: phpmyadmin:latest # Menggunakan image resmi PhpMyAdmin
+    container_name: basisdata_phpmyadmin
+    restart: unless-stopped
+    ports:
+      # Memetakan port 8081 di laptop ke port 80 di kontainer
+      # Akses via browser: http://localhost:8081
+      - "8081:80"
+    environment:
+      # Memberitahu PhpMyAdmin di mana server database-nya
+      PMA_HOST: db_mysql # <-- Nama service database kita
+      # (Opsional) Port database internal jika bukan 3306
+      # PMA_PORT: 3306
+    depends_on:
+      - db_mysql # Pastikan database nyala dulu
+    networks:
+      - basisdata_network # Terhubung ke jaringan internal
+
+# === Definisi Volume ===
 volumes:
   db_basisdata_data:
 
