@@ -20,7 +20,7 @@ services:
     networks:
       - basisdata_network # Jaringan khusus untuk service ini
 
-# === Definisi Volume ===
+# === Definisi Volume ====
 volumes:
   db_basisdata_data:
 
