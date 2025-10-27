@@ -1,0 +1,30 @@
+services:
+  # === Service untuk Database MySQL ===
+  db_mysql:
+    image: mysql:latest # Menggunakan image resmi MySQL terbaru
+    container_name: basisdata_mysql # Nama kontainer
+    restart: unless-stopped
+    environment:
+      # Variabel untuk setup database awal
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} # Baca dari file .env
+      MYSQL_DATABASE: ${DB_DATABASE} # Baca dari file .env
+      MYSQL_USER: ${DB_USER} # Baca dari file .env
+      MYSQL_PASSWORD: ${DB_PASSWORD} # Baca dari file .env
+    volumes:
+      # Menyimpan data database secara permanen
+      - db_basisdata_data:/var/lib/mysql
+    ports:
+      # Memetakan port 3308 di laptop ke port 3306 di kontainer
+      # !! Port berbeda dari PBO (3307) agar tidak bentrok !!
+      - "3308:3306"
+    networks:
+      - basisdata_network # Jaringan khusus untuk service ini
+
+# === Definisi Volume ===
+volumes:
+  db_basisdata_data:
+
+# === Definisi Jaringan ===
+networks:
+  basisdata_network:
+    driver: bridge

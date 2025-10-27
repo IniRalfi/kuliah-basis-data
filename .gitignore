@@ -1,0 +1,181 @@
+# Umum: sistem operasi
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Umum: temporary / logs
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+/tmp
+/.temp
+
+# Environment / secrets
+.env
+.env.*.local
+.env.local
+.env.production
+.env.*.secret
+*.key
+*.pem
+
+# Editor / IDE
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+*.sublime-workspace
+*.sublime-project
+.vscode/settings.json
+
+# Node.js / frontend
+node_modules/
+bower_components/
+jspm_packages/
+dist/
+build/
+.cache/
+.next/
+.nuxt/
+.out/
+.pnp.*
+.npmrc
+.eslintcache
+parcel-cache/
+public/build/
+
+# Package managers
+package-lock.json
+# Jika ingin commit lockfile, hapus baris di atas
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+venv/
+ENV/
+env/
+.venv/
+.python-version
+pip-log.txt
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# Java / JVM
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+hs_err_pid*
+target/
+*.iml
+.gradle/
+build/
+out/
+.settings/
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+
+# Go
+bin/
+obj/
+*.exe
+*.test
+vendor/
+
+# Rust
+target/
+**/*.rs.bk
+
+# Ruby
+*.gem
+*.rbc
+.bundle/
+vendor/bundle
+log/
+tmp/
+db/*.sqlite3
+coverage/
+spec/reports/
+
+# PHP / Composer
+vendor/
+composer.lock
+
+# Android / iOS
+local.properties
+*.apk
+*.ap_
+*.aab
+build/
+captures/
+.externalNativeBuild/
+.gradle/
+*.keystore
+DerivedData/
+build/
+*.xcworkspace
+*.xcuserstate
+
+# CI / CD
+.github/workflows/*.local.yml
+.circleci/
+.vagrant/
+
+# Misc build artifacts
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.exe
+*.class
+*.pdb
+*.lib
+
+# Coverage / reports
+coverage/
+coverage.*.html
+reports/
+report/
+
+# Keys, credentials, and secrets
+*.env
+*.pem
+*.crt
+*.key
+secrets.yml
+
+# Ignore deploy artifacts
+dist/
+release/
+releases/
+
+# End
